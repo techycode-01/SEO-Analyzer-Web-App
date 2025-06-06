@@ -1,6 +1,7 @@
 // === client/src/App.jsx ===
 import { useState } from 'react';
 import axios from 'axios';
+import API_URL from './config';
 import './App.css';
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
 
     try {
       // Send text to server for analysis
-      const res = await axios.post('http://localhost:5000/analyze', { text });
+      const res = await axios.post(`${API_URL}/analyze`, { text });
       // Save the analysis results
       setAnalysis(res.data);
     } catch (error) {
@@ -47,7 +48,7 @@ function App() {
     setLoading(true);
     try {
       // Ask server to insert the keyword
-      const res = await axios.post('http://localhost:5000/insert-keyword', { text, keyword });
+      const res = await axios.post(`${API_URL}/insert-keyword`, { text, keyword });
       // Update the text with the keyword added
       setText(res.data.updatedText);
       
