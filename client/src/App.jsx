@@ -124,7 +124,7 @@ function App() {
 
             {/* Keywords section */}
             <div className="keywords-section">
-              <h2>Top Keywords</h2>
+              <h2>Recommended Keywords</h2>
               <div className="keywords-grid">
                 {/* Show each keyword with its stats */}
                 {analysis.keywordAnalysis && analysis.keywordAnalysis.map((kw, i) => (
