@@ -2,6 +2,9 @@ services:
   - type: web
     name: seo-analyzer
     env: node
+    region: oregon
+    plan: free
+    nodeVersion: 20.11.1
     buildCommand: npm install && npm run build
     startCommand: npm start
     envVars:
@@ -9,6 +12,14 @@ services:
         value: production
       - key: PORT
         value: 5000
+    healthCheckPath: /
+    autoDeploy: true
+    buildFilter:
+      paths:
+        - client/**/*.{js,jsx,ts,tsx,json}
+        - server/**/*.{js,json}
+        - package.json
+        - render.yaml
 
   - type: static
     name: seo-analyzer-frontend
