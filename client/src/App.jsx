@@ -55,7 +55,7 @@ function App() {
       setText(res.data.updatedText);
       
       // Get fresh analysis of the new text
-      const newAnalysis = await axios.post('http://localhost:5000/analyze', { 
+      const newAnalysis = await axios.post(`${API_URL}/analyze`, { 
         text: res.data.updatedText 
       });
       setAnalysis(newAnalysis.data);

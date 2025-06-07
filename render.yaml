@@ -1,32 +1,19 @@
 services:
   - type: web
-    name: seo-analyzer
+    name: seo-analyzer-backend
     env: node
-    region: oregon
-    plan: free
-    nodeVersion: 20.11.1
-    buildCommand: npm install && npm run build
-    startCommand: npm start
+    buildCommand: cd server && npm install
+    startCommand: cd server && npm start
     envVars:
-      - key: NODE_ENV
-        value: production
-      - key: PORT
-        value: 5000
-    healthCheckPath: /
-    autoDeploy: true
-    buildFilter:
-      paths:
-        - client/**/*.{js,jsx,ts,tsx,json}
-        - server/**/*.{js,json}
-        - package.json
-        - render.yaml
-
+      - key: NODE_VERSION
+        value: 18.17.0
+      - key: TEXTRAZOR_API_KEY
+        sync: false
+    
   - type: static
     name: seo-analyzer-frontend
-    env: static
     buildCommand: cd client && npm install && npm run build
-    staticPublishPath: ./client/dist
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html 
+    staticPublishPath: client/dist
+    envVars:
+      - key: NODE_VERSION
+        value: 18.17.0 
