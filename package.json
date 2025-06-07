@@ -1,0 +1,20 @@
+{
+  "name": "seo-analyzer-app",
+  "version": "1.0.0",
+  "description": "SEO Analyzer Web Application",
+  "main": "server/index.js",
+  "scripts": {
+    "install-client": "cd client && npm install",
+    "install-server": "cd server && npm install",
+    "build-client": "cd client && npm run build",
+    "start": "cd server && npm start",
+    "build": "npm run install-client && npm run install-server && npm run build-client",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+} 
