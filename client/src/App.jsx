@@ -1,8 +1,10 @@
 // === client/src/App.jsx ===
 import { useState } from 'react';
 import axios from 'axios';
-import API_URL from './config';
 import './App.css';
+
+// Get API URL from environment variables
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
 function App() {
   // Store text input from user
@@ -132,8 +134,12 @@ function App() {
                   <div key={i} className="keyword-card">
                     <div className="keyword-info">
                       <span className="keyword-text">{kw.keyword}</span>
+                      <span className="keyword-meta">Type: {kw.type}</span>
                       <span className="keyword-stats">
                         Density: {kw.density}% ({kw.count} occurrences)
+                      </span>
+                      <span className="keyword-relevance">
+                        Relevance: {(kw.relevance * 100).toFixed(1)}%
                       </span>
                     </div>
                     <button
